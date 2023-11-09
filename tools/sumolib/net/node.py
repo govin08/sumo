@@ -23,7 +23,7 @@ class Node:
 
     """ Nodes from a sumo network """
 
-    def __init__(self, id, type, coord, incLanes, intLanes=None):
+    def __init__(self, id, type, coord, incLanes, intLanes=None, name=None):
         self._id = id
         self._type = type
         self._coord = coord
@@ -38,6 +38,7 @@ class Node:
         self._fringe = None
         self._params = {}
         self._selected = False
+        self._name = name
 
     def getID(self):
         return self._id
@@ -89,7 +90,7 @@ class Node:
 
     def getIncoming(self):
         return self._incoming
-
+    
     def getInternal(self):
         """Returns the internal lanes starting at the border of the node.
 
@@ -208,3 +209,7 @@ class Node:
 
     def __repr__(self):
         return '<junction id="%s"/>' % self._id
+
+    def getName(self):
+        """Returns the name of the node"""
+        return self._name
